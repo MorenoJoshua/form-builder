@@ -7,7 +7,7 @@ const s = {
   l: 8,
   xl: 10
 };
-const required = { required: false };
+const required = { required: true };
 const asRequired = (formConfig: InputInterface[]) =>
   formConfig.reduce((acc, curr) => {
     return [...acc, { ...curr, ...required }];

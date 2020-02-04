@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
 import CustomForm from "./components/form";
-
+import { submitForm } from "./firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { formConfig } from "./form";
 
 interface AppProps {}
 interface AppState {
-  name: string;
+  status: "pre" | "post" | "submitting";
 }
 
 class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
-      name: "React"
+      status: "pre"
     };
   }
 
@@ -25,21 +25,32 @@ class App extends Component<AppProps, AppState> {
           <div className="display-4">Solicitud de arrendamiento</div>
         </div>
         <div className="container">
-          <CustomForm
-            fields={formConfig}
-            handleSubmit={e => {
-              // e.preserve();
-              e.preventDefault();
-              const form: HTMLFormElement = e.target;
-
-              const formData = new FormData(form);
-              // // Display the key/value pairs
-              for (var pair of formData.entries()) {
-                console.log(pair[0] + ", " + pair[1]);
-              }
-                console.log(Object.fromEntries(formData.entries()));
-            }}
-          />
+          {this.state.status === "pre" && (
+            <CustomForm
+              fields={formConfig}
+              handleSubmit={e => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                submitForm(Object.fromEntries(formData.entries()))
+                  .then(() => this.setState({ status: "post" }))
+                  .catch(() => alert("Hubo un error"));
+              }}
+            />
+          )}
+          {this.state.status === "post" && (
+            <>
+              <div className="display-4 text-success">
+                Tu solicitud ha sido enviada
+              </div>
+              <div>Nos pondremos en contacto contigo lo antes posible</div>
+              <button
+                className="btn btn-warning mt-3"
+                onClick={() => window.close()}
+              >
+                Cerrar
+              </button>
+            </>
+          )}
         </div>
       </React.Fragment>
     );
