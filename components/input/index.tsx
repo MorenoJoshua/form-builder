@@ -25,7 +25,7 @@ const CustomInput = ({
       );
 
     case "hr":
-      return <div className="w-100ƒ">
+      return <div className="w-100">
         <hr className="w-100"/>
       </div>;
 
