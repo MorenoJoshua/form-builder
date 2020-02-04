@@ -7,7 +7,7 @@ const s = {
   l: 8,
   xl: 10
 };
-const required = { required: true };
+const required = { required: false };
 const asRequired = (formConfig: InputInterface[]) =>
   formConfig.reduce((acc, curr) => {
     return [...acc, { ...curr, ...required }];
@@ -15,7 +15,7 @@ const asRequired = (formConfig: InputInterface[]) =>
 
 const addSection = (section: string, formConfig: InputInterface[]) =>
   formConfig.reduce((acc, curr) => {
-    return [...acc, { ...curr, name: `${section}[${curr.name}]` }];
+    return [...acc, { ...curr, name: `${section}.${curr.name}` }];
   }, []);
 
 const numberPattern = (minLength, maxLength) => ({
