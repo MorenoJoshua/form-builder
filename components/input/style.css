@@ -1,0 +1,6 @@
+.auto-form {
+  display: flex;
+  margin: 0.5rem 0 !important;
+  flex-direction: column;
+  justify-content: flex-end;
+}
