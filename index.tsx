@@ -4,6 +4,7 @@ import CustomForm from "./components/form";
 import { submitForm } from "./firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { formConfig } from "./form";
+import {Mapa} from './image';
 
 interface AppProps {}
 interface AppState {
@@ -14,7 +15,7 @@ class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
-      status: "pre"
+      status: "post"
     };
   }
 
@@ -43,6 +44,7 @@ class App extends Component<AppProps, AppState> {
                 Tu solicitud ha sido enviada
               </div>
               <div>Nos pondremos en contacto contigo lo antes posible</div>
+              <div>Ubicacion de casa: <a href="https://goo.gl/maps/fhV2i1iWHZd4jnn97"><Mapa/>(Click para ver en Google Maps)</a></div>
               <button
                 className="btn btn-warning mt-3"
                 onClick={() => window.close()}
