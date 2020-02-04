@@ -4,3 +4,9 @@
   flex-direction: column;
   justify-content: flex-end;
 }
+hr {
+  /* height: 1px;
+  background: rgba(0,0,0,0.2);
+  display: block; */
+  /* width: 90%; */
+}

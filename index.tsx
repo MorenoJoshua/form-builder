@@ -22,7 +22,7 @@ class App extends Component<AppProps, AppState> {
     return (
       <React.Fragment>
         <div className="jumbotron jumbotron-fluid text-center">
-          <div className="display-4">Form Demo abc</div>
+          <div className="display-4">Solicitud de arrendamiento</div>
         </div>
         <div className="container">
           <CustomForm fields={formConfig} handleSubmit={e => console.log(e)} />
