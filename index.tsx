@@ -15,7 +15,7 @@ class App extends Component<AppProps, AppState> {
   constructor(props) {
     super(props);
     this.state = {
-      status: "post"
+      status: "pre"
     };
   }
 
