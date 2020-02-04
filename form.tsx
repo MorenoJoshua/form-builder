@@ -10,7 +10,7 @@ const s = {
 const required = { required: true };
 const asRequired = (formConfig: InputInterface[]) =>
   formConfig.reduce((acc, curr) => {
-    return [...acc, { ...curr, ...required }];
+    return [...acc, { ...curr, ...required, label: `${curr.label}*` }];
   }, []);
 
 const addSection = (section: string, formConfig: InputInterface[]) =>
