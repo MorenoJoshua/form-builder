@@ -19,10 +19,12 @@ const submitForm = async formData => {
     .doc()
     .set({
       to: ["joshua200128@gmail.com"],
-      message: {
-        subject: `Solicitud ${formData.nombre}, - \$${formData['work.ingreso']}`,
-        text: JSON.stringify(formData, null, 2),
-        html: `<pre>${JSON.stringify(formData, null, 2)}</pre>`
+      template: {
+        name: "solicitud",
+        data: formData,
+        // subject: `Solicitud ${formData.nombre}, - \$${formData['work.ingreso']}`,
+        // text: JSON.stringify(formData, null, 2),
+        // html: `<pre>${JSON.stringify(formData, null, 2)}</pre>`
       }
     });
 };

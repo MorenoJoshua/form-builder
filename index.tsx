@@ -6,6 +6,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { formConfig } from "./form";
 import {Mapa} from './image';
 
+import {object as dot} from 'dot-object';
+
 interface AppProps {}
 interface AppState {
   status: "pre" | "post" | "submitting";
@@ -32,14 +34,14 @@ class App extends Component<AppProps, AppState> {
               handleSubmit={e => {
                 e.preventDefault();
                 const formData = new FormData(e.target);
-                submitForm(Object.fromEntries(formData.entries()))
+                submitForm(dot(Object.fromEntries(formData.entries())))
                   .then(() => this.setState({ status: "post" }))
                   .catch(() => alert("Hubo un error"));
               }}
             />
           )}
           {this.state.status === "post" && (
-            <>
+            <div>
               <div className="display-4 text-success">
                 Tu solicitud ha sido enviada
               </div>
@@ -51,7 +53,7 @@ class App extends Component<AppProps, AppState> {
               >
                 Cerrar
               </button>
-            </>
+            </div>
           )}
         </div>
       </React.Fragment>
